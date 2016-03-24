@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+
+
+<h1> Recent posts: </h1> 
+
+{% for post in posts %}
+
+ <h3><a href='{{ post.get_absolute_url }}'>{{ post.title }} </a></h3 <br>
+ Author: {{ post.author.first_name }} <br>
+ Created {{ post.added }} <br> <br>
+ {{ post.body }} <hr/>
+{% empty %}
+<p> There are no posts yet. Sorry </p>
+ 
+{% endfor %}
+
+
+
+{% endblock %}
