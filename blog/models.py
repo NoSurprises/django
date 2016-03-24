@@ -12,6 +12,8 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now = True)
     draft = models.BooleanField(default = True)
     slug = models.SlugField(null = True, blank = True)
+    rating = models.IntegerField(default = 0)
+    
     
     def __unicode__(self):
         return self.title
@@ -22,3 +24,17 @@ class Post(models.Model):
         
     def get_absolute_url(self):
         return '/blog/%s/' %(self.slug)
+        
+
+
+class Comment(models.Model):
+    author = models.CharField(max_length = 100)
+    body = models.TextField()
+    added = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey(Post)
+    
+    def __unicode__(self):
+        return (self.author + ' ---- commented on ----' + self.post.title)
+        
+    
+
