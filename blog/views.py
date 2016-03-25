@@ -55,19 +55,22 @@ def detail(request, slug=None):
     
 
     
-def plus(request, slug=None):
+def plus(request, slug, from_page):
     post = get_object_or_404(Post, slug=slug)
     post.rating += 1
     post.save()
-    return HttpResponseRedirect('/blog/' + slug)
+    from_page = '/'.join(from_page.split('--'))
+    return HttpResponseRedirect('/%s'%from_page)
     
     
     
-def minus(request, slug=None):
+def minus(request, slug, from_page):
     post = get_object_or_404(Post, slug=slug)
     post.rating -= 1
     post.save()
-    return HttpResponseRedirect('/blog/' + slug)
+    from_page = '/'.join(from_page.split('--'))
+    return HttpResponseRedirect('/%s'%from_page)
+    
     
     
     

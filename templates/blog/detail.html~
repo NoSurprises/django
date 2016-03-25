@@ -13,9 +13,9 @@
 <br> <br>
 {{ post.body }}
 <p> Rating: {{ post.rating }} 
-    <a href='{{ post.get_absolute_url }}/plus'> + </a>
+    <a href='{{ post.get_absolute_url }}plus/blog+{{ post.slug }}'> + </a>
     /
-    <a href='{{ post.get_absolute_url }}/minus'> - </a>
+    <a href='{{ post.get_absolute_url }}minus/blog+{{ post.slug }}'> - </a>
 </p>
 <br>
 <br><br>

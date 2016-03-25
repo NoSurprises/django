@@ -12,12 +12,26 @@
  Author: {{ post.author.first_name }} <br>
  Created {{ post.added }} <br> <br>
  {{ post.body }} <br>
+ 
+ 
+ 
+ 
+<!-- TODO-->
  <p> Rating: {{ post.rating }} 
-    <a href='{{ post.get_absolute_url }}plus'> + </a>
+    <a href='{{ post.get_absolute_url }}plus/blog'> + </a>
     /
-    <a href='{{ post.get_absolute_url }}minus'> - </a>
+    <a href='{{ post.get_absolute_url }}minus/blog'> - </a>
 </p>
 <hr/>
+
+
+
+
+
+
+
+
+
 {% empty %}
 <p> There are no posts yet. Sorry </p>
  
