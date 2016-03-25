@@ -12,9 +12,31 @@
 {{ post.added }} by {{ post.author.first_name }} 
 <br> <br>
 {{ post.body }}
-
+<p> Rating: {{ post.rating }} 
+    <a href='{{ post.get_absolute_url }}plus'> + </a>
+    /
+    <a href='{{ post.get_absolute_url }}minus'> - </a>
+</p>
 <br>
+<br><br>
+<hr/>
+<h3> Comments: </h3>
 
+{% for comment in comments %}
+    <p> {{ comment.author }}. {{ comment.added }} </p>
+    <p> {{ comment.body }} </p>
+    <hr/>
+{% empty %}
+    <p>
+        There are no comments yet
+    </p>
+{% endfor %}
+<h3> Add comment: </h3>
 
+<form action='' method='POST'> {% csrf_token %}
+
+    {{ form.as_p}} <br>
+    <input type='submit' value='OK'>
+</form>
 
 {% endblock %}

@@ -11,7 +11,13 @@
  <h3><a href='{{ post.get_absolute_url }}'>{{ post.title }} </a></h3 <br>
  Author: {{ post.author.first_name }} <br>
  Created {{ post.added }} <br> <br>
- {{ post.body }} <hr/>
+ {{ post.body }} <br>
+ <p> Rating: {{ post.rating }} 
+    <a href='{{ post.get_absolute_url }}plus'> + </a>
+    /
+    <a href='{{ post.get_absolute_url }}minus'> - </a>
+</p>
+<hr/>
 {% empty %}
 <p> There are no posts yet. Sorry </p>
  
