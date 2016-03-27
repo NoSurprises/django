@@ -6,6 +6,13 @@
  
  <body>
     {% block content %} {% endblock %}
-    
+    <div> 
+        <h1> My sidebar </h1>
+        <ul>
+            {% for post in most_popular %}
+                <li> <a href='{{ post.get_absolute_url }}'>{{ post.title }} </a> </li>
+            {% endfor %}
+        </ul>
+    </div>
  </body>
 </html>

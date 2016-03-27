@@ -9,9 +9,10 @@ from django.shortcuts import redirect
 
 def home(request):
     posts = Post.objects.filter(draft=False)
+    most_popular = Post.objects.order_by('-rating') [:5]
     context = {
         'posts': posts,
-    
+        'most_popular': most_popular,
     }
     return render(request, 'blog/home.html', context)
     
@@ -59,7 +60,7 @@ def plus(request, slug, from_page):
     post = get_object_or_404(Post, slug=slug)
     post.rating += 1
     post.save()
-    from_page = '/'.join(from_page.split('+'))
+    from_page = '/'.join(from_page.split('--'))
     return HttpResponseRedirect('/%s'%from_page)
     
     
@@ -68,7 +69,7 @@ def minus(request, slug, from_page):
     post = get_object_or_404(Post, slug=slug)
     post.rating -= 1
     post.save()
-    from_page = '/'.join(from_page.split('+'))
+    from_page = '/'.join(from_page.split('--'))
     return HttpResponseRedirect('/%s'%from_page)
     
     

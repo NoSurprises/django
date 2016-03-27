@@ -8,10 +8,11 @@ from django.shortcuts import redirect
 # Create your views here.
 
 def home(request):
-    posts = Post.objects.filter(draft=False)
+    posts = Post.objects.filter(draft=False).order_by('-added')
+    most_popular = Post.objects.order_by('-rating') [:5]
     context = {
         'posts': posts,
-    
+        'most_popular': most_popular,
     }
     return render(request, 'blog/home.html', context)
     
