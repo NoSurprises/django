@@ -1,1 +1,1 @@
-# portfolio last versions asdfsdv 
+# django blog
